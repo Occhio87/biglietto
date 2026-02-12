@@ -1,36 +1,33 @@
 
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
   <title>Biglietto Concerto</title>
+
   <style>
     body {
-      background: #000;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      padding: 24px 16px 48px;
+      background: black;
+      color: white;
+      font-family: Arial;
       text-align: center;
+      padding: 20px;
     }
 
     h1 {
-      margin: 12px 0 8px;
-      letter-spacing: 1px;
+      margin-top: 10px;
     }
 
-    /* Pulsante principale */
+    /* Pulsante per rivelare la sorpresa */
     #revealBtn {
-      margin-top: 32px;
-      padding: 22px 36px;
+      padding: 25px 45px;
       background: #ffcc00;
-      color: #000;
-      font-size: 28px;
-      border-radius: 22px;
-      cursor: pointer;
+      color: black;
       border: none;
-      animation: pulse 1.5s infinite;
-      font-weight: bold;
+      border-radius: 22px;
+      font-size: 30px;
+      cursor: pointer;
+      animation: pulse 1.4s infinite;
+      margin-top: 40px;
     }
 
     @keyframes pulse {
@@ -39,68 +36,103 @@
       100% { transform: scale(1); }
     }
 
-    /* Contenuto rivelato dopo il click */
+    /* Contenuto che compare dopo il click */
     #content {
       display: none;
-      animation: fadeIn 800ms ease-in-out both;
+      animation: fadeIn 0.9s ease-in-out;
+      margin-top: 25px;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Immagine biglietto */
-    .ticket {
-      width: min(720px, 90vw);
-      border-radius: 20px;
-      margin-top: 18px;
-    }
-
-    /* Glow animato intorno al player Spotify */
-    .glow {
+    /* Contenitore glow del tasto PLAY */
+    .play-container {
       display: inline-block;
-      margin-top: 16px;
-      padding: 10px;
-      border-radius: 20px;
-      animation: glowPulse 2s infinite;
+      padding: 30px;
+      border-radius: 50%;
+      animation: glow 2s infinite;
+      margin-top: 25px;
+      cursor: pointer;
     }
 
-    @keyframes glowPulse {
-      0%   { box-shadow: 0 0 10px #ffcc00; }
-      50%  { box-shadow: 0 0 26px #ffaa00; }
-      100% { box-shadow: 0 0 10px #ffcc00; }
+    @keyframes glow {
+      0%   { box-shadow: 0 0 12px #ffcc00; }
+      50%  { box-shadow: 0 0 28px #ffaa00; }
+      100% { box-shadow: 0 0 12px #ffcc00; }
     }
 
-    /* Testo guida sopra il player */
+    /* Icona play */
+    .play-button {
+      width: 0;
+      height: 0;
+      border-left: 45px solid black;
+      border-top: 28px solid transparent;
+      border-bottom: 28px solid transparent;
+      margin-left: 10px;
+    }
+
+    /* Cerchio giallo dietro al play */
+    .circle {
+      width: 95px;
+      height: 95px;
+      background: #ffcc00;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .play-hint {
-      font-size: 20px;
+      font-size: 22px;
       color: #ffcc00;
-      margin-top: 12px;
+      margin-top: 15px;
       animation: hintPulse 1.4s infinite;
     }
 
     @keyframes hintPulse {
-      0%   { opacity: 1; }
-      50%  { opacity: .55; }
+      0% { opacity: 1; }
+      50% { opacity: .55; }
       100% { opacity: 1; }
     }
+
   </style>
 </head>
+
 <body>
 
-  <h1>SURPRISE!</h1>
+<h1>SURPRISE!</h1>
 
-  <!-- Pulsante che rivela biglietto + player -->
-  <button id="revealBtn" onclick="showSurprise()">
-    CLICCA QUI PER VEDERE LA SORPRESA
-  </button>
+<button id="revealBtn" onclick="showSurprise()">
+  CLICCA QUI PER VEDERE LA SORPRESA
+</button>
 
-  <!-- Contenuto nascosto fino al click -->
-  <div id="content">
-    <img class="ticket" src="ticket.png" alt="Biglietto digitale" />
+<div id="content">
+  ticket.png
 
-    <div class="play-hint">🎵 Premi <b>PLAY</b> per accendere il ritmo!</div>
+  <div class="play-hint">Premi play e fai partire il ritmo 🎵🔥</div>
 
-    <div class="glow">
-      <!-- Lo src viene impostato dopo il click per rispettare le policy dei browser -->
+  <!-- TASTO PLAY ANIMATO -->
+  <div class="play-container" onclick="startMusic()">
+    <div class="circle">
+      <div class="play-button"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showSurprise() {
+    document.getElementById("content").style.display = "block";
+    document.getElementById("revealBtn").style.display = "none";
+  }
+
+  function startMusic() {
+    // Apri Spotify in una nuova scheda o nell'app
+    window.open("https://open.spotify.com/track/06UxQcCoqPQR7klXrsDSVe", "_blank");
+  }
+</script>
+
+</body>
+</html>
