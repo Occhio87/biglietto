@@ -1,11 +1,33 @@
 <html>
 <head>
 <title>Biglietto Concerto</title>
+<style>
+body { background:black; text-align:center; color:white; font-family:Arial; }
+#playbtn {
+  margin-top:30px;
+  padding:20px 40px;
+  background:#ffcc00;
+  color:black;
+  font-size:28px;
+  border-radius:20px;
+  cursor:pointer;
+  animation:pulse 1.5s infinite;
+  border:none;
+}
+@keyframes pulse {
+  0% { transform:scale(1); }
+  50% { transform:scale(1.1); }
+  100% { transform:scale(1); }
+}
+</style>
 </head>
-<body style="background-color:black; text-align:center; color:white; font-family:Arial;">
+<body>
 <h1>SURPRISE!</h1>
 <img src="ticket.png" style="width:70%; border-radius:20px;" />
 <br><br>
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/06UxQcCoqPQR7klXrsDSVe?utm_source=generator&autoplay=1" width="70%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+<button id="playbtn" onclick="document.getElementById('sp').style.display='block'; this.style.display='none';">TOCCA PER ACCENDERE IL RITMO</button>
+<div id="sp" style="display:none;">
+<iframe style="border-radius:12px; margin-top:20px;" src="https://open.spotify.com/embed/track/06UxQcCoqPQR7klXrsDSVe" width="70%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+</div>
 </body>
 </html>
