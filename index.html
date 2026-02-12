@@ -1,3 +1,4 @@
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -16,7 +17,7 @@
       margin-top: 10px;
     }
 
-    /* Pulsante per rivelare la sorpresa */
+    /* Pulsante reveal */
     #revealBtn {
       padding: 25px 45px;
       background: #ffcc00;
@@ -27,6 +28,7 @@
       cursor: pointer;
       animation: pulse 1.4s infinite;
       margin-top: 40px;
+      font-weight: bold;
     }
 
     @keyframes pulse {
@@ -35,7 +37,7 @@
       100% { transform: scale(1); }
     }
 
-    /* Contenuto che compare dopo il click */
+    /* Contenuto dopo il click */
     #content {
       display: none;
       animation: fadeIn 0.9s ease-in-out;
@@ -47,7 +49,14 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Contenitore glow del tasto PLAY */
+    /* Immagine biglietto */
+    .ticket {
+      width: min(720px, 90vw);
+      border-radius: 20px;
+      margin-top: 18px;
+    }
+
+    /* Glow animato del tasto play */
     .play-container {
       display: inline-block;
       padding: 30px;
@@ -63,17 +72,7 @@
       100% { box-shadow: 0 0 12px #ffcc00; }
     }
 
-    /* Icona play */
-    .play-button {
-      width: 0;
-      height: 0;
-      border-left: 45px solid black;
-      border-top: 28px solid transparent;
-      border-bottom: 28px solid transparent;
-      margin-left: 10px;
-    }
-
-    /* Cerchio giallo dietro al play */
+    /* Cerchio giallo col triangolo play */
     .circle {
       width: 95px;
       height: 95px;
@@ -82,6 +81,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .play-button {
+      width: 0;
+      height: 0;
+      border-left: 45px solid black;
+      border-top: 28px solid transparent;
+      border-bottom: 28px solid transparent;
+      margin-left: 8px;
     }
 
     .play-hint {
@@ -104,12 +112,16 @@
 
 <h1>SURPRISE!</h1>
 
+<!-- PULSANTE PRINCIPALE -->
 <button id="revealBtn" onclick="showSurprise()">
   CLICCA QUI PER VEDERE LA SORPRESA
 </button>
 
+<!-- CONTENUTO NASCOSTO FINO AL CLICK -->
 <div id="content">
-  ticket.png
+
+  <!-- ⭐ QUI ORA L’IMMAGINE TORNA A FUNZIONARE ⭐ -->
+  <img src="ticket.png" class="ticket">
 
   <div class="play-hint">Premi play e fai partire il ritmo 🎵🔥</div>
 
@@ -128,8 +140,10 @@
   }
 
   function startMusic() {
-    // Apri Spotify in una nuova scheda o nell'app
-    window.open("https://open.spotify.com/track/06UxQcCoqPQR7klXrsDSVe", "_blank");
+    window.open(
+      "https://open.spotify.com/track/06UxQcCoqPQR7klXrsDSVe",
+      "_blank"
+    );
   }
 </script>
 
