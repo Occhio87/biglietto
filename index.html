@@ -37,7 +37,7 @@
       100% { transform: scale(1); }
     }
 
-    /* Contenuto dopo il click */
+    /* Contenuto reveal */
     #content {
       display: none;
       animation: fadeIn 0.9s ease-in-out;
@@ -49,14 +49,14 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Immagine biglietto */
+    /* Immagine */
     .ticket {
       width: min(720px, 90vw);
       border-radius: 20px;
       margin-top: 18px;
     }
 
-    /* Glow animato del tasto play */
+    /* Glow del tasto play */
     .play-container {
       display: inline-block;
       padding: 30px;
@@ -72,7 +72,6 @@
       100% { box-shadow: 0 0 12px #ffcc00; }
     }
 
-    /* Cerchio giallo col triangolo play */
     .circle {
       width: 95px;
       height: 95px;
@@ -105,6 +104,11 @@
       100% { opacity: 1; }
     }
 
+    /* Banner YouTube */
+    #ytplayer {
+      display: none;
+      margin-top: 25px;
+    }
   </style>
 </head>
 
@@ -117,11 +121,11 @@
   CLICCA QUI PER VEDERE LA SORPRESA
 </button>
 
-<!-- CONTENUTO NASCOSTO FINO AL CLICK -->
+<!-- CONTENUTO NASCOSTO -->
 <div id="content">
 
-  <!-- ⭐ QUI ORA L’IMMAGINE TORNA A FUNZIONARE ⭐ -->
-  <img src="ticket.png" class="ticket">
+  <!-- IMMAGINE BIGLIETTO -->
+  ticket.png
 
   <div class="play-hint">Premi play e fai partire il ritmo 🎵🔥</div>
 
@@ -131,6 +135,18 @@
       <div class="play-button"></div>
     </div>
   </div>
+
+  <!-- BANNER YOUTUBE CHE COMPARE DOPO IL CLICK -->
+  <div id="ytplayer">
+    <iframe width="90%" height="200"
+      src="https://www.youtube.com/embed/wQFbLtiG1So?autoplay=1"
+      title="Sean Paul - Get Busy"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
 </div>
 
 <script>
@@ -140,10 +156,10 @@
   }
 
   function startMusic() {
-    window.open(
-      "https://open.spotify.com/track/06UxQcCoqPQR7klXrsDSVe",
-      "_blank"
-    );
+    // mostra il banner youtube
+    document.getElementById("ytplayer").style.display = "block";
+    // rimuove il tasto play animato (opzionale)
+    document.querySelector(".play-container").style.display = "none";
   }
 </script>
 
