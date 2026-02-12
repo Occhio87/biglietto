@@ -1,33 +1,79 @@
+
 <html>
 <head>
 <title>Biglietto Concerto</title>
 <style>
-body { background:black; text-align:center; color:white; font-family:Arial; }
-#playbtn {
-  margin-top:30px;
-  padding:20px 40px;
-  background:#ffcc00;
-  color:black;
-  font-size:28px;
-  border-radius:20px;
-  cursor:pointer;
-  animation:pulse 1.5s infinite;
-  border:none;
-}
-@keyframes pulse {
-  0% { transform:scale(1); }
-  50% { transform:scale(1.1); }
-  100% { transform:scale(1); }
-}
+    body {
+        background:black;
+        text-align:center;
+        color:white;
+        font-family:Arial;
+        margin:0;
+        padding:20px;
+    }
+
+    #revealBtn {
+        margin-top:40px;
+        padding:25px 45px;
+        background:#ffcc00;
+        color:black;
+        font-size:30px;
+        border-radius:25px;
+        cursor:pointer;
+        border:none;
+        animation:pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform:scale(1); }
+        50% { transform:scale(1.1); }
+        100% { transform:scale(1); }
+    }
+
+    #content {
+        display:none;
+    }
 </style>
 </head>
+
 <body>
+
 <h1>SURPRISE!</h1>
-<img src="ticket.png" style="width:70%; border-radius:20px;" />
-<br><br>
-<button id="playbtn" onclick="document.getElementById('sp').style.display='block'; this.style.display='none';">TOCCA PER ACCENDERE IL RITMO</button>
-<div id="sp" style="display:none;">
-<iframe style="border-radius:12px; margin-top:20px;" src="https://open.spotify.com/embed/track/06UxQcCoqPQR7klXrsDSVe" width="70%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+
+<!-- PULSANTE PER ATTIVARE LA SORPRESA -->
+<button id="revealBtn" onclick="showSurprise()">
+    CLICCA QUI PER VEDERE LA SORPRESA
+</button>
+
+<!-- CONTENUTO NASCOSTO FINO AL CLICK -->
+<div id="content">
+    <img src="ticket.png" style="width:70%; border-radius:20px; margin-top:20px;" />
+    <br><br>
+
+    <!-- PLAYER SPOTIFY (caricato solo dopo il click) -->
+    <iframe id="player"
+        style="border-radius:12px; margin-top:25px;"
+        src=""
+        width="75%" height="152"
+        frameBorder="0"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+        loading="lazy">
+    </iframe>
 </div>
+
+<script>
+function showSurprise() {
+    // mostra biglietto
+    document.getElementById("content").style.display = "block";
+
+    // nasconde pulsante
+    document.getElementById("revealBtn").style.display = "none";
+
+    // carica Spotify SOLO dopo interazione → così parte senza blocchi
+    document.getElementById("player").src =
+        "https://open.spotify.com/embed/track/06UxQcCoqPQR7klXrsDSVe?utm_source=generator";
+}
+</script>
+
 </body>
 </html>
