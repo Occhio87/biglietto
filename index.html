@@ -1,4 +1,3 @@
- 
 <html>
 <head>
   <meta charset="utf-8">
@@ -32,8 +31,8 @@
     }
 
     @keyframes pulse {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.12); }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.12); }
       100% { transform: scale(1); }
     }
 
@@ -46,10 +45,10 @@
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Immagine */
+    /* Immagine biglietto */
     .ticket {
       width: min(720px, 90vw);
       border-radius: 20px;
@@ -104,7 +103,7 @@
       100% { opacity: 1; }
     }
 
-    /* Banner YouTube */
+    /* Banner YouTube nascosto */
     #ytplayer {
       display: none;
       margin-top: 25px;
@@ -124,9 +123,10 @@
 <!-- CONTENUTO NASCOSTO -->
 <div id="content">
 
-  <!-- IMMAGINE BIGLIETTO -->
-  ticket.png
+  <!-- IMMAGINE DEL BIGLIETTO -->
+  <img src="ticket.png" class="ticket">
 
+  <!-- Testo animato -->
   <div class="play-hint">Premi play e fai partire il ritmo 🎵🔥</div>
 
   <!-- TASTO PLAY ANIMATO -->
@@ -136,7 +136,7 @@
     </div>
   </div>
 
-  <!-- BANNER YOUTUBE CHE COMPARE DOPO IL CLICK -->
+  <!-- BANNER YOUTUBE -->
   <div id="ytplayer">
     <iframe width="90%" height="200"
       src="https://www.youtube.com/embed/wQFbLtiG1So?autoplay=1"
@@ -156,9 +156,7 @@
   }
 
   function startMusic() {
-    // mostra il banner youtube
     document.getElementById("ytplayer").style.display = "block";
-    // rimuove il tasto play animato (opzionale)
     document.querySelector(".play-container").style.display = "none";
   }
 </script>
